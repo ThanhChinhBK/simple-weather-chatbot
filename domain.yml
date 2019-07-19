@@ -1,44 +1,44 @@
-# python -m rasa_core.server -d models/dialogue -u models/nlu/default/current -o models/out.log
-# curl -XPOST localhost:5005/conversations/default/respond -d '{"query":"hi"}'
-
-# action_factory: remote
-
 slots:
-  PERSON:
+  location:
     type: text
-  GPE:
+  per:
     type: text
+                
 
 intents:
-  - greeting
-  - how_are_you
-  - bye
-  - my_name_is
-  - get_weather
+ - greet
+ - goodbye
+ - my_name_is
+ - ask_weather
+ - ask_weather_location
+ - ask_temperature
 
-actions:
-  - utter_greeting
-  - utter_how_i_am
-  - utter_bye
-  - utter_its_nice_to_meet_you
-  #- action_get_weather
-  - actions.weather.ActionGetWeather
+
+entities:
+ - location
+ - per
 
 templates:
-  utter_default:
-    - Per aspera ad astra.
-  utter_greeting:
-    - Hi!
-    - Hello!
-    - Hello, my friend.
-    - Hello there, my friend.
-  utter_how_i_am:
-    - I am doing ok.
-    - I am good.
-    - I am doing good.
-  utter_bye:
-    - Bye.
-    - Good bye.
-  utter_its_nice_to_meet_you:
-    - It's nice to meet you, {PERSON}.
-    - Nice to meet you, {PERSON}.
+  utter_greet:
+    - 'Hello, What can I do for you?'
+    - 'Hello!'
+  utter_goodbye:
+    - 'Bye'
+    - 'See you soon'
+  utter_ask_location:
+    - 'In what location?'
+    - 'Which area?'
+    - 'Which city specifically?'
+  utter_did_that_help:
+    - text: "Did that help you?"
+   
+
+actions:
+ - utter_greet
+ - utter_goodbye
+ - utter_ask_location
+ - actions.weather.ActionWeather
+ - actions.temperature.ActionTemperature
+ - utter_did_that_help
+    
+  
