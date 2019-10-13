@@ -192,17 +192,41 @@
         ]
       },
       {
-        "text": "at Budapest",
+        "text": "at Prague",
         "intent": "ask_weather_location",
         "entities": [
           {
             "start": 3,
-            "end": 11,
+            "end": 9,
+            "value": "Prague",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "Budapest",
+        "intent": "ask_weather_location",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
             "value": "Budapest",
             "entity": "location"
           }
         ]
       },
+      {
+        "text": "Hanoi",
+        "intent": "ask_weather_location",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "Hanoi",
+            "entity": "location"
+          }
+        ]
+      },    
       {
         "text": "What is the temp in Stuttgart?",
         "intent": "ask_temperature",

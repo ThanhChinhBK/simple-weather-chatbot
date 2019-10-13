@@ -3,10 +3,9 @@ from rasa_core.events import SlotSet
 import requests
 import random
 
-'''Get "action_weather" data'''
-class ActionWeather(Action):
+class ActionTemperature(Action):
     def name(self):
-        return 'action_weather'
+        return 'action_temp'
 
     def run(self, dispatcher, tracker, domain):
         app_id = "JnnC8L7yA6ebC44rCiuj"
@@ -21,11 +20,10 @@ class ActionWeather(Action):
         if (len(weather_data) > 2):
             # JSON data works just similar to python dictionary and you can access the value using [].
             current_temperature =  weather_data['observations']['location'][0]['observation'][0]['temperature']
-            wind=weather_data['observations']['location'][0]['observation'][0]['windSpeed']
-            desc=weather_data['observations']['location'][0]['observation'][0]['description']
 
-            response = """ It is {} in {} at this moment. The temperature is {} degree and the wind speed is {} m/s. """. format(desc, location, current_temperature, wind)
+            response = """The temperature is {} degree in {} at this moment. """. format(current_temperature, location)
             dispatcher.utter_message(response)
         else:
             dispatcher.utter_message("City Not Found ")
+
 

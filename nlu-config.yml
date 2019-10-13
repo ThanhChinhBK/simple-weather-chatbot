@@ -1,4 +1,4 @@
-language: "en"
+language: "en_core_web_sm"
 
 pipeline:
 - name: "nlp_spacy"
